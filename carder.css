@@ -1,0 +1,126 @@
+/* 
+ * Example Carder Styles
+ */
+.carder-logos {
+	clear: both;
+	float: right;
+	width: 65%;
+	margin-top: 3px;
+}
+.carder-logos img {
+	opacity: .4;
+	margin-right: 2px;
+	max-height: 25px;
+}
+.carder-logos img.hilite {
+	opacity: 1;
+}
+label.carder-label {
+	background: none;
+	border: none;
+}
+#cardid {
+	width: 40%;
+	float: left;
+}
+.carder-ccid {
+	width: 37px;
+	margin-left: 3px;
+}
+.field-wrap label.error {
+	clear: both;
+	float: right;
+	width: 65%;
+	text-align: left;
+	color: #800000;
+}
+
+/* 
+ * Make it Pretty
+ */
+html {
+	background: rgb(236,237,223);
+}
+body {
+	font-family: "Century Gothic", CenturyGothic, "AppleGothic", sans-serif;
+	font-size: 13px;
+	color: #444;
+	
+	width: 90%;
+	max-width: 775px;
+	box-sizing: border-box;
+	margin: 1em auto;
+	padding: 2%;
+	background: #fff;
+	border: 2px solid #444;
+	
+	-ms-border-radius: 10px;
+	-o-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;
+	
+	-ms-box-shadow: 1px 1px 10px #444;
+	-o-box-shadow: 1px 1px 10px #444;
+	-webkit-box-shadow: 1px 1px 10px #444;
+	-moz-box-shadow: 1px 1px 10px #444;
+	box-shadow: 1px 1px 10px #444;
+}
+#main {
+	overflow: hidden;
+}
+h1, h2 {
+	text-align: center;
+}
+h1 {
+	font-size: 1.7em;
+	margin: 0 0 .25em;
+}
+h2 {
+	font-size: 1em;
+	margin: 0 0 1em;
+}
+
+.field-wrap {
+	overflow: hidden;
+	margin: 0 0 1em;
+}
+.field-wrap label,
+.field-wrap input,
+.field-wrap select,
+.field-wrap textarea {
+	box-sizing: border-box;
+	margin: 0;
+}
+.field-wrap label {
+	float: left;
+	width: 34%;
+	text-align: right;
+	padding: 3px 3px 3px 0;
+	font-size: .87em;
+}
+.field-wrap input,
+.field-wrap select,
+.field-wrap textarea {
+	float: right;
+	width: 65%;
+	padding: 3px;
+}
+.field-wrap.submit {
+	width: 65%;
+	float: right;
+}
+.field-wrap.submit input {
+	float: none;
+	width: auto;
+	padding: 5px;
+}
+@media all and (min-width:800px) {
+	body {
+		font-size: 16px;
+		width: 65%;
+		padding: 2% 4%;
+	}
+
+}
+
