@@ -2,7 +2,9 @@
 
 Formerly at https://github.com/wesleytodd/Form-FX/tree/master/carder
 
-**Version 1.2**
+(Example Page)[http://carder.wtdev.me:8000/]
+
+**Version 2.0**
 
 This plugin adds credit card logos and ccid/ccv images which dynamically update based on the input in the credit card field.  The plugin will try and match the shortest possible number for each type by default.  When the field loses focus the field is validated and if is not valid an error will be added and the field will only validate a full card number.
 
@@ -14,15 +16,47 @@ Discover: 6011111111111117
 Mastercard: 5555555555554444  
 Visa: 4111111111111111  
 
-## Example
+## Basic Example
+
+	jQuery(document).ready(function($){
+		$('#cardnum').carder();
+	});
+
+## Intermediate Example
+
+This example defines a CCID icon that is added dynamically.
+
+	jQuery(document).ready(function($){
+		$('#cardnum').carder({
+			'ccidIcon'  : function(){
+				var ccidimg = $('<img src="" class="carder-ccid"/>').hide();
+				$('#cardid').after(ccidimg);
+				return ccidimg;
+			},
+			'errorMessage' : 'That credit card number dosent smell right....'
+		});
+	});
+
+## Full Example
 
 	$('input.creditcard').carder({
-		logoPosition    : 'after',                                         //Placement of the logos (before|after)
-		logoHiliteClass : 'hilite',                                        //Applied to the active logos for hiliting
-		logoMarkup      : '<div class="carder-logos">{{cc-logos}}</div>',  //Markup of the logos
-		matchPartial    : true,                                            //True mathces on the shortest possiable numbers
-		supportedCC     : {                                                //Regex's for the full and partial matches
-			'visa'       : {                                               //Remove any that you do not want to match
+		matchPartial   : true,         // Match partial numbers?
+		keyUpTimeout   : 500,          // Throttle amount on keyup trigger
+		logoClass      : 'logo',       // Class to apply to credit card logos
+		highlightClass : 'highlight',  // Active class on logos
+		logoPosition   : 'after',      // Logo position (before|after|custom function)
+		logoMarkup     : '<div class="carder-logos">{{cc-logos}}</div>',  // Template for logos
+		logoTemplate   : '<img class="{{classes}}" alt="{{cardname}}" src="{{cardimage}}" />', // Individual logo image template
+		ccidIcon       : false,        // CCID Icon (jQuery|custom function)
+		ccidTemplate   : '<img src="{{ccid-icon}}" />', // template for CCID image
+		ccLogos	       : {            // A hash of card types and matching image src values
+			'visa'       : 'data:image/gif;base64,R0lGOD...',
+			'amex'       : 'data:image/gif;base64,R0lGO...',
+			'mastercard' : 'data:image/gif;base64,R0lG...',
+			'discover'   : 'data:image/gif;base64,R0l...'
+		},
+		supportedCC     : {           // The credit card regular expressions
+			'visa'       : {
 				full    : '^4[0-9]{12}(?:[0-9]{3})?$',
 				partial : '^4[0-9]{0,15}$'
 			},
@@ -39,27 +73,20 @@ Visa: 4111111111111111
 				partial : '^6(?:011|5[0-9]{2})[0-9]{0,12}$'
 			}
 		},
-		ccidRelationship : {                                               //CCID image relationships, value matches ccidImages key
+		ccidRelationship : {          // Relationships between card types and CCID images
 			'visa'       : 'standard',
 			'amex'       : 'amex',
 			'mastercard' : 'standard',
 			'discover'   : 'standard'
 		},
-		ccidImages      : {                                                //Data URI's for the images, key matches the ccidRelationships value
-			'standard'   : 'data:image/gif;base64,R0lGOD......9w4IADs=',
-			'amex'       : 'data:image/gif;base64,R0lGOD......wICADs='
+		ccidImages      : {           // CCID images
+			'standard'   : 'data:image/gif;base64,R0lGODl...',
+			'amex'       : 'data:image/gif;base64,R0lGODl...'
 		},
-		ccLogos         : {                                                //Data URI's for the logos
-			'visa'       : 'data:image/gif;base64,R0lGOD......LQAA7',
-			'amex'       : 'data:image/gif;base64,R0lGOD......wIAOw==',
-			'mastercard' : 'data:image/gif;base64,R0lGOD......AOw==',
-			'discover'   : 'data:image/gif;base64,R0lGOD......ZAADs='
-		},
-		ccidIcon         : false,                                          //Function or jQuery object for the ccid icon,
-		keyUpTimeout     : 500,                                            //How long to wait after typing to test the value
-		errorClass       : 'error',                                        //Applied if the field doesn't match on blur event
-		errorMessage     : 'Please enter a valid credit card number.',     //Message to add if errored on blur
-		errorPosition    : 'after'                                         //Where to put the error message (before|after)
-	});
+		errorTemplate    : '<label class="carder-label {{errorClass}}" for="{{elId}}">{{errorMessage}}</label>',  // An error message template
+		errorClass       : 'error', // The error class applied to the field and the error message
+		errorMessage     : 'Please enter a valid credit card number.',  // The error message
+		errorPosition    : 'after'  // Position of the error message
+});
 
 Some optional css is defined in carder.css, but this is just an example of the effect you can create.
