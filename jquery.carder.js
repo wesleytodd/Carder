@@ -1,4 +1,17 @@
-(function($){
+/*
+ * Credit Card Type Indication (carder)
+ * http://wesleytodd.com/
+ * http://whitelion.com/
+ *
+ * Version 1.2
+ *
+ * Requires   jQuery > 1.7
+ *
+ * Basic Usage:
+ * $('input').carder();
+ *
+ */
+ (function($){
 	
 	/**
 	 * Constructor
