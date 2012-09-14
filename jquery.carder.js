@@ -11,7 +11,7 @@
  * $('input').carder();
  *
  */
- (function($){
+var Carder = (function($, exports){
 	
 	/**
 	 * Constructor
@@ -170,11 +170,14 @@
 	 */
 	Carder.testCard = function(value, regexes, matchPartial){
 		// Must be all digits
-		if(value.match(/\D/)) return false;
+		if(value.match(/[^\d\s-]/) || value === '') return false;
 
 		//Clean off formatting
 		value = value.replace(/\D+/g, '');
 		
+		// Match Partial defaults to true
+		matchPartial = (typeof matchPartial != 'undefined') ? matchPartial : true;
+
 		// Find a match
 		var match = false,
 			matchType = false;
@@ -258,11 +261,11 @@
 	 * Really, Really  Basic Templates
 	 */
 	var Template = function(template){
-		if(!this instanceof Template){
+		if(!(this instanceof Template)){
 			return new Template(template);
 		}else{
-		var that = this;
-			that.template = template;
+			var that = this;
+				that.template = template;
 			return function(data){
 				var out = that.template;
 				$.each(data, function(key, val){
@@ -273,4 +276,9 @@
 		}
 	};
 
-}).call(this, jQuery);
+	/**
+	 * Export Carder?
+	 */
+	if(typeof exports != 'undefined' && exports) return Carder;
+
+}).call(this, jQuery, Carder);
