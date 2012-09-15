@@ -1,0 +1,18 @@
+{
+	"name": "Carder",
+	"version": "2.0.0",
+	"author": "Wes Todd <wes@wesleytodd.com>",
+	"description": "Credit card type detection",
+	"homepage": "https://github.com/wesleytodd/Carder",
+	"dependencies" : {
+		'jquery' : '1.7.0'
+	},
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/wesleytodd/Carder.git"
+	},
+	"scripts": {
+		"setup": "make setup",
+		"closure": "make closure"
+	}
+}

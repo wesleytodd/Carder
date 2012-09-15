@@ -5,7 +5,7 @@
 	<title>Carder - A jQuery Plugin for Credit Card Type Indication</title>
 	<meta name="description" content="Carder - A jQuery Plugin for Credit Card Type Indication">
 	<meta name="author" content="Wes Todd">
-	
+
 	<link rel="stylesheet" href="carder.css">
 </head>
 
@@ -15,21 +15,17 @@
 		<h2>A jQuery Plugin for Credit Card Type Indication</h2>
 	</header>
 	<div id="main" role="main">
-		
+
 		<form action="/" method="post">
-			
+
 			<div class="field-wrap text required">
 				<label for="cardnum">Credit Card Number</label>
 				<input type="text" name="cardnum" id="cardnum" />
 			</div>
-			
+
 			<div class="field-wrap text required">
 				<label for="cardid">Credit Card ID</label>
 				<input type="text" name="cardid" id="cardid" />
-			</div>
-			
-			<div class="field-wrap submit required">
-				<input type="submit" value="Submit" />
 			</div>
 
 			<h2 style="text-align: left;">Test Numbers</h2>
@@ -39,19 +35,20 @@
 				<li><strong>Mastercard:</strong> 5555555555554444</li>
 				<li><strong>Visa:</strong> 4111111111111111</li>
 			</ul>
-			
+
+			<a href="/test" >View Tests</a>
+
 		</form>
-		
+
 	</div>
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	<script>window.jQuery || document.write('<script src="js/jquery-1.7.2.min.js"><\/script>')</script>
-	
-	<script src="jquery.carder.js"></script>
+
+	<script src="jquery.carder.min.js"></script>
 	<script>
-		
+
 		jQuery(document).ready(function($){
-			
+
 			$('#cardnum').carder({
 				'ccidIcon'  : function(){
 					var ccidimg = $('<img src="" class="carder-ccid"/>').hide();
