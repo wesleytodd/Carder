@@ -26,7 +26,7 @@ var Carder = (function($, exports){
 		this.$logos = $(Carder.generateLogoMarkup(
 			this.options.ccLogos,
 			this.options.logoMarkup,
-			this.options.logoTemplate, 
+			this.options.logoTemplate,
 			this.options.logoClass + ' ' + this.options.highlightClass
 		));
 
@@ -100,7 +100,7 @@ var Carder = (function($, exports){
 	};
 
 	Carder.prototype.setCardType = function(type){
-		this.clearError();	
+		this.clearError();
 		// Remove highlight class from all
 		this.$logos
 			.find('.' + this.options.logoClass)
