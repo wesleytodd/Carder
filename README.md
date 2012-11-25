@@ -87,6 +87,6 @@ This example defines a CCID icon that is added dynamically.
 		errorClass       : 'error', // The error class applied to the field and the error message
 		errorMessage     : 'Please enter a valid credit card number.',  // The error message
 		errorPosition    : 'after'  // Position of the error message
-});
+    });
 
 Some optional css is defined in carder.css, but this is just an example of the effect you can create.
